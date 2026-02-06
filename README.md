@@ -6,7 +6,7 @@ Agentic memory for [Laravel AI SDK](https://github.com/laravel/ai).
 
 ## Requirements
 
-- PHP 8.3+
+- PHP 8.4+
 - Laravel 12+
 - laravel AI SDK
 - A vector compatible database, preferably PostgreSQL with [pgvector](https://github.com/pgvector/pgvector) extension

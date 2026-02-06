@@ -40,7 +40,7 @@ class WithMemory
         );
 
         if ($memories->isNotEmpty()) {
-            $memoryContext = $memories->map(fn ($memory) => "- {$memory->content}")->implode("\n");
+            $memoryContext = $memories->map(fn ($memory): string => "- {$memory->content}")->implode("\n");
 
             $prompt = $prompt->prepend("Relevant memories from previous conversations:\n{$memoryContext}");
         }

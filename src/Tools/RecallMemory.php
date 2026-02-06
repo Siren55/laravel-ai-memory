@@ -72,7 +72,7 @@ class RecallMemory implements Tool
             return 'No relevant memories found.';
         }
 
-        return $memories->map(fn ($memory) => "- {$memory->content}")->implode("\n");
+        return $memories->map(fn ($memory): string => "- {$memory->content}")->implode("\n");
     }
 
     /**

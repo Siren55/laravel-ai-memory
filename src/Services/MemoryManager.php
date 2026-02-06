@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Eznix86\AI\Memory\Services;
 
 use Eznix86\AI\Memory\Models\Memory;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -16,7 +15,7 @@ class MemoryManager
      *
      * @param  array<string, mixed>  $context
      */
-    public function store(string $content, array $context = []): \Eznix86\AI\Memory\Models\Memory
+    public function store(string $content, array $context = []): Memory
     {
         $embedding = Str::of($content)->toEmbeddings();
 
@@ -30,7 +29,7 @@ class MemoryManager
      * Recall memories using vector similarity and reranking.
      *
      * @param  array<string, mixed>  $context
-     * @return \Illuminate\Support\Collection<int, \Eznix86\AI\Memory\Models\Memory>
+     * @return Collection<int, Memory>
      */
     public function recall(string $query, array $context = [], ?int $limit = null): Collection
     {
@@ -58,7 +57,7 @@ class MemoryManager
      * Get all memories with optional context filtering.
      *
      * @param  array<string, mixed>  $context
-     * @return \Illuminate\Database\Eloquent\Collection<int, \Eznix86\AI\Memory\Models\Memory>
+     * @return \Illuminate\Database\Eloquent\Collection<int, Memory>
      */
     public function all(array $context = [], int $limit = 100): \Illuminate\Database\Eloquent\Collection
     {

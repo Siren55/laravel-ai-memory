@@ -26,7 +26,7 @@ test('can store memories with user context', function (): void {
         'content' => 'User prefers dark mode',
     ]);
 
-    Embeddings::assertGenerated(fn (EmbeddingsPrompt $prompt) => $prompt->contains('User prefers dark mode'));
+    Embeddings::assertGenerated(fn (EmbeddingsPrompt $prompt): bool => $prompt->contains('User prefers dark mode'));
 });
 
 test('can recall memories using semantic search', function (): void {
@@ -152,7 +152,7 @@ test('recall returns empty collection when no memories exist', function (): void
 
     expect($memories)->toBeEmpty();
 
-    Embeddings::assertGenerated(fn (EmbeddingsPrompt $prompt) => $prompt->contains('anything'));
+    Embeddings::assertGenerated(fn (EmbeddingsPrompt $prompt): bool => $prompt->contains('anything'));
 });
 
 // ──────────────────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ test('full flow: store then recall returns relevant memories', function (): void
         ->and($results->pluck('content')->toArray())->toContain('User works at Acme Corp');
 
     // Step 4: Verify embedding generation was called for store + recall
-    Embeddings::assertGenerated(fn (EmbeddingsPrompt $prompt) => $prompt->contains('User works at Acme Corp'));
+    Embeddings::assertGenerated(fn (EmbeddingsPrompt $prompt): bool => $prompt->contains('User works at Acme Corp'));
 });
 
 test('full flow: store, forget, recall no longer returns deleted memory', function (): void {

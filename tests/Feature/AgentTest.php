@@ -178,7 +178,7 @@ test('MemoryAgent can be faked and prompted', function (): void {
 
     expect($response->text)->toBe('I remember you prefer dark mode!');
 
-    MemoryAgent::assertPrompted(fn (AgentPrompt $prompt) => $prompt->contains('What do I prefer?'));
+    MemoryAgent::assertPrompted(fn (AgentPrompt $prompt): bool => $prompt->contains('What do I prefer?'));
 });
 
 test('MemoryAgent has memory tools configured', function (): void {
@@ -201,7 +201,7 @@ test('MemoryAgent has WithMemory middleware', function (): void {
 test('MemoryAgent fake with dynamic response', function (): void {
     AgentMemory::fake();
 
-    MemoryAgent::fake(fn (string $prompt) => "You asked: {$prompt}");
+    MemoryAgent::fake(fn (string $prompt): string => "You asked: {$prompt}");
 
     $agent = new MemoryAgent(['user_id' => 'user-123']);
     $response = $agent->prompt('Remember my name is Bruno');
@@ -218,7 +218,7 @@ test('MemoryAgent assertNotPrompted works', function (): void {
     $agent = new MemoryAgent(['user_id' => 'user-123']);
     $agent->prompt('Hello');
 
-    MemoryAgent::assertNotPrompted(fn (AgentPrompt $prompt) => $prompt->contains('Goodbye'));
+    MemoryAgent::assertNotPrompted(fn (AgentPrompt $prompt): bool => $prompt->contains('Goodbye'));
 });
 
 test('StoreMemory and RecallMemory work together', function (): void {

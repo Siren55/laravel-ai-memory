@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Eznix86\AI\Memory\Models;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
+
 /**
  * @property int $id
  * @property string $content
  * @property array<float> $embedding
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  */
-class Memory extends \Illuminate\Database\Eloquent\Model
+class Memory extends Model
 {
     /**
      * The attributes that are mass assignable.

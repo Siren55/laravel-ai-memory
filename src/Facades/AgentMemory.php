@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Eznix86\AI\Memory\Facades;
 
+use Illuminate\Support\Collection;
 use Eznix86\AI\Memory\Models\Memory;
 use Eznix86\AI\Memory\Services\MemoryManager;
 use Illuminate\Support\Facades\Facade;
@@ -12,9 +13,9 @@ use Laravel\Ai\Prompts\EmbeddingsPrompt;
 use Laravel\Ai\Reranking;
 
 /**
- * @method static \Eznix86\AI\Memory\Models\Memory store(string $content, array<string, mixed> $context = [])
- * @method static \Illuminate\Support\Collection<string, \Eznix86\AI\Memory\Models\Memory> recall(string $query, array<string, mixed> $context = [], ?int $limit = null)
- * @method static \Illuminate\Support\Collection<string, \Eznix86\AI\Memory\Models\Memory> all(array<string, mixed> $context = [], int $limit = 100)
+ * @method static Memory store(string $content, array<string, mixed> $context = [])
+ * @method static Collection<string, Memory> recall(string $query, array<string, mixed> $context = [], ?int $limit = null)
+ * @method static Collection<string, Memory> all(array<string, mixed> $context = [], int $limit = 100)
  * @method static bool forget(int $memoryId)
  * @method static int forgetAll(array<string, mixed> $context = [])
  *
@@ -44,7 +45,7 @@ class AgentMemory extends Facade
 
         $embedding = static::makeDeterministicEmbedding($dimensions);
 
-        Embeddings::fake(fn (EmbeddingsPrompt $prompt) => array_map(fn (): array => $embedding, $prompt->inputs));
+        Embeddings::fake(fn (EmbeddingsPrompt $prompt): array => array_map(fn (): array => $embedding, $prompt->inputs));
 
         Reranking::fake($rerankingResponses);
     }

